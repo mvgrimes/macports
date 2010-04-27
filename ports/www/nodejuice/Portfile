@@ -17,11 +17,15 @@ homepage 			http://nodejuice.com/
 
 fetch.type          git
 git.url             http://github.com/stephenlb/nodejuice.git
-git.branch          668ed5f906ac3504da06d5a73dcdb6457a26d570
+git.branch          26785a38446d824818d3ff7a1e0a10e69f2686de
 
-patchfiles          nodejuice.patch nodejuice.js.patch
+# Need to patch the nodejuice bash script to chdir to share/nodejuice
+patchfiles          nodejuice.patch
 use_configure       no
-build   {}
+build   {
+    file delete ${worksrcpath}/symlinks/node
+    system "ln -s ${prefix}/bin/node ${worksrcpath}/symlinks/node"
+}
 destroot {
     # file delete ${worksrcpath}/symlinks/node
     xinstall -m 755 -W ${worksrcpath} nodejuice ${destroot}${prefix}/bin
@@ -29,21 +33,14 @@ destroot {
     xinstall -m 644 -W ${worksrcpath} LICENSE README \
             ${destroot}${prefix}/share/${name}
 
+    # xinstall only works on individual files, so this won't work
     # xinstall -m 644 -W ${worksrcpath} \
     #         library provision symlinks demos servers website \
     #         ${destroot}${prefix}/share/${name}
 
+    # this will work though
     system "tar -c library provision symlinks demos servers website | (cd ${destroot}${prefix}/share/${name} && tar -x)" 
-    # system "ln -s ${destroot}${prefix}/bin/node ${destroot}${prefix}/share/nodejuice/symlinks/"
-
 }
 
-# distname			${name}-v${version}
-# checksums 		    md5 9610790a56c0b371ae223e0f13b5cc14 \\
-# 				    sha1 a8cd22ad931427424dfde14f98f1f4270e86dbbd
-
 depends_lib		    port:nodejs
-
-# configure.args	--disable-python --without-boost-python
-
 

@@ -4,7 +4,7 @@ PortSystem			1.0
 
 name 				nodejs
 
-version 			0.1.91
+version 			0.1.92
 categories 			devel
 maintainers 		mgrimes
 description 		Evented I/O for V8 javascript. 
@@ -15,10 +15,7 @@ homepage 			http://nodejs.org/
 master_sites		http://nodejs.org/dist/
 distname			node-v${version}
 
-checksums 		    md5 9610790a56c0b371ae223e0f13b5cc14 \
-				    sha1 a8cd22ad931427424dfde14f98f1f4270e86dbbd
-
-# depends_lib		port:libiconv
-# configure.args	--disable-python --without-boost-python
+checksums           sha1 e58e9ba26cf2869bc4dbe6ddd9ebecac48b04be3 \
+                    md5 6f49c25a73e9bf0d23363917ab9b1c5f
 
 

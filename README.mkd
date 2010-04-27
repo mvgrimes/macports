@@ -16,8 +16,6 @@ The following is a list of the ports included:
 
 * www
 	* nodejuice - a web development tool to autorefesh the browser on changes.
-		(_the nodeJuice Portfile is pre-alpha quality and needs work_)
-
 
 ## Installation
 
