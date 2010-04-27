@@ -1,0 +1,49 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+PortSystem			1.0
+
+name 				nodejuice
+
+version 			1.5.0
+categories 			www
+maintainers 		mgrimes
+description 		A web development tool to autorefesh the browser on changes.
+long_description 	NodeJuice is a tool which allows you to develop with a \
+                    push connection to your web browser. Automatic browser \
+                    refresh on file change or update is what you can call  \
+                    it. Develop on one to many browsers simultaneously     \
+                    without needing to reload manually. 
+homepage 			http://nodejuice.com/
+
+fetch.type          git
+git.url             http://github.com/stephenlb/nodejuice.git
+git.branch          668ed5f906ac3504da06d5a73dcdb6457a26d570
+
+patchfiles          nodejuice.patch nodejuice.js.patch
+use_configure       no
+build   {}
+destroot {
+    # file delete ${worksrcpath}/symlinks/node
+    xinstall -m 755 -W ${worksrcpath} nodejuice ${destroot}${prefix}/bin
+    xinstall -m 755 -d ${destroot}${prefix}/share/${name}
+    xinstall -m 644 -W ${worksrcpath} LICENSE README \
+            ${destroot}${prefix}/share/${name}
+
+    # xinstall -m 644 -W ${worksrcpath} \
+    #         library provision symlinks demos servers website \
+    #         ${destroot}${prefix}/share/${name}
+
+    system "tar -c library provision symlinks demos servers website | (cd ${destroot}${prefix}/share/${name} && tar -x)" 
+    # system "ln -s ${destroot}${prefix}/bin/node ${destroot}${prefix}/share/nodejuice/symlinks/"
+
+}
+
+# distname			${name}-v${version}
+# checksums 		    md5 9610790a56c0b371ae223e0f13b5cc14 \\
+# 				    sha1 a8cd22ad931427424dfde14f98f1f4270e86dbbd
+
+depends_lib		    port:nodejs
+
+# configure.args	--disable-python --without-boost-python
+
+

@@ -1,0 +1,11 @@
+--- library/seeker.js
++++ library/seeker.js
+@@ -328,7 +328,7 @@ function seek(wait) { setTimeout(function() {
+     })
+ }, wait || 2000 ) }
+ 
+- // Prevent multiple connections
++// Prevent multiple connections
+ window['-nodeJuice-'] || (window['-nodeJuice-'] = 1) && seek(+"{{wait}}");
+ 
+ })("http://{{host}}/")

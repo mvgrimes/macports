@@ -1,0 +1,44 @@
+= MacPorts: Portfiles Written by Mark Grimes
+
+This is a collection of Portfiles that I have written for MacPorts. Some have
+been submitted to the official repository, some haven't. 
+
+== Included Ports
+
+The following is a list of the ports included:
+
+* lang
+	* ikarus-scheme - a R6RS Scheme implementation
+
+* devel
+	* libpst - library to convert pst files to mbox and other formats
+	* nodejs - evented I/O for V8 javascript. 
+
+* www
+	* nodejuice - a web development tool to autorefesh the browser on changes.
+		_ the nodeJuice Portfile is pre-alpha quality and needs work _
+
+
+== Installation
+
+To use theses Portfiles, clone the git repository, then run `portindex` from
+the `ports` directory, and finally, add an entry in the `macports/sources.conf`
+file pointing to the ports directory. 
+
+	$ cd $HOME
+	$ git clone http://github.com/mgrimes/macports.git
+	$ cd macports/ports
+	$ portindex
+	$ sudo echo "file:///Users/USERNAME/ports" \
+			>> /opt/local/etc/macports/sources.conf
+
+== Bugs
+
+Please create a bug report in the *Issues* section of github.com:
+
+	http://github.com/mgrimes/ports/issues
+
+== Author
+
+Mark Grimes
+

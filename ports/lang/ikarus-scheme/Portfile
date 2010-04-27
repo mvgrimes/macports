@@ -1,0 +1,28 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+# $Id$
+PortSystem			1.0
+
+name 				ikarus-scheme
+
+version 			r1870
+categories 			lang
+maintainers 		mgrimes
+description 		ikarus-scheme is a R6RS Scheme implementation
+long_description 	Ikarus Scheme is a free optimizing incremental \
+                    native-code compiler for Scheme as specified in \
+                    the Revised^6 Report on the Algorithmic Language Scheme.
+homepage 			http://ikarus-scheme.org/
+master_sites		http://ikarus-scheme.org/ikarus.dev/
+distfiles           ${name}-${version}.tgz
+
+checksums 		    md5 529c24afd3f3072a5c9b20aba322dedf \
+				    sha1 8c0962c47346535047cfcc7160c2d9485af1fb22
+
+depends_lib		    port:gsl \
+				    port:libffi \
+				    port:gmp
+
+configure.args	            --enable-libffi 
+configure.cflags-append     -I${prefix}/lib/libffi-3.0.9/include/
+configure.cppflags-append   -I${prefix}/lib/libffi-3.0.9/include/
+
