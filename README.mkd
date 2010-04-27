@@ -1,9 +1,9 @@
-= MacPorts: Portfiles Written by Mark Grimes
+# MacPorts: Portfiles Written by Mark Grimes
 
 This is a collection of Portfiles that I have written for MacPorts. Some have
 been submitted to the official repository, some haven't. 
 
-== Included Ports
+## Included Ports
 
 The following is a list of the ports included:
 
@@ -16,10 +16,10 @@ The following is a list of the ports included:
 
 * www
 	* nodejuice - a web development tool to autorefesh the browser on changes.
-		_ the nodeJuice Portfile is pre-alpha quality and needs work _
+		(_the nodeJuice Portfile is pre-alpha quality and needs work_)
 
 
-== Installation
+## Installation
 
 To use theses Portfiles, clone the git repository, then run `portindex` from
 the `ports` directory, and finally, add an entry in the `macports/sources.conf`
@@ -32,13 +32,13 @@ file pointing to the ports directory.
 	$ sudo echo "file:///Users/USERNAME/ports" \
 			>> /opt/local/etc/macports/sources.conf
 
-== Bugs
+## Bugs
 
 Please create a bug report in the *Issues* section of github.com:
 
 	http://github.com/mgrimes/ports/issues
 
-== Author
+## Author
 
 Mark Grimes
 
